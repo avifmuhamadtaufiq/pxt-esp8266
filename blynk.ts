@@ -88,9 +88,9 @@ namespace esp8266 {
 
         // Set the upload successful flag and return.
         // Make sure the value is not empty.
-        if (value != "") {
-            blynkUpdated = true
-        }
+        //if (value != "") {
+        blynkUpdated = true
+        //}
         return value
     }
 
