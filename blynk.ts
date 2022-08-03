@@ -52,6 +52,7 @@ namespace esp8266 {
         if (sendCommand("AT+CIPSTART=\"TCP\",\"" + BLYNK_API_URL + "\",80", "OK", 10000) == false) {
             // Close the connection and return.
             sendCommand("AT+CIPCLOSE", "OK", 1000)
+            value = "Cuk Mar"
             return "huahuahua"
         }
 
@@ -88,9 +89,9 @@ namespace esp8266 {
 
 //         // Set the upload successful flag and return.
 //         // Make sure the value is not empty.
-//         //if (value != "") {
-//         blynkUpdated = true
-//         //}
+        if (value != "") {
+            blynkUpdated = true
+        }
         return value
     }
 
