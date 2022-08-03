@@ -40,20 +40,20 @@ namespace esp8266 {
     //% blockId=esp8266_read_blynk
     //% block="read Blynk: Token %authToken Pin %pin"
     export function readBlynk(authToken: string, pin: string): string {
-        let value = "bhbh"
+        let value = ""
 
-//         // Reset the upload successful flag.
-//         blynkUpdated = false
+        // Reset the upload successful flag.
+        blynkUpdated = false
 
-//         // Make sure the WiFi is connected.
-//         if (isWifiConnected() == false) return value
+        // Make sure the WiFi is connected.
+        if (isWifiConnected() == false) return value
 
-//         // Connect to ThingSpeak. Return if failed.
-//         if (sendCommand("AT+CIPSTART=\"TCP\",\"" + BLYNK_API_URL + "\",80", "OK", 10000) == false) {
-//             // Close the connection and return.
-//             sendCommand("AT+CIPCLOSE", "OK", 1000)
-//             return value
-//         }
+        // Connect to ThingSpeak. Return if failed.
+        if (sendCommand("AT+CIPSTART=\"TCP\",\"" + BLYNK_API_URL + "\",80", "OK", 10000) == false) {
+            // Close the connection and return.
+            sendCommand("AT+CIPCLOSE", "OK", 1000)
+            return "huahuahua
+        }
 
 //         // Construct the data to send.
 //         //let data = "GET /" + authToken + "/get/" + pin + " HTTP/1.1\r\n"
