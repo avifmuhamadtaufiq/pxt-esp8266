@@ -123,7 +123,7 @@ namespace esp8266 {
         }
 
         // Construct the data to send.
-        let data = "GET /" + "external" + "/api/" + "update?token=" + authToken + "&" + pin + "=" + formatUrl(value) + "\r\n"
+        let data = "GET /" + "external" + "/api/" + "update?token=" + authToken + "&" + pin + "=" + "gemoy" + " HTTP/1.1\r\n"
         
         //https://blynk.cloud/external/api/update?token=ffujYGgbf805tgsf&v1=100
 
