@@ -40,7 +40,7 @@ namespace esp8266 {
     //% blockId=esp8266_read_blynk
     //% block="read Blynk: Token %authToken Pin %pin"
     export function readBlynk(authToken: string, pin: string): string {
-        let value = "iiii"
+        let value = ""
 
         // Reset the upload successful flag.
         blynkUpdated = false
@@ -57,7 +57,7 @@ namespace esp8266 {
 
         // Construct the data to send.
         //let data = "GET /" + authToken + "/get/" + pin + " HTTP/1.1\r\n"
-        let data = "GET /external/api/update?token=" + authToken + "&" + pin + " HTTP/1.1\r\n"
+        let data = "GET /external/api/get?token=" + authToken + "&" + pin + " HTTP/1.1\r\n"
         //https://blynk.cloud/external/api/get?token=Rps15JICmtRVbFyS_95houlLbm6xIQ2L&v1
         // let data = "GET /" + "external" + "/api/" + "update?token=" + authToken + "&" + pin + "=" + formatUrl(value) + " HTTP/1.1\r\n"
         
@@ -69,20 +69,20 @@ namespace esp8266 {
         if (getResponse("SEND OK", 10000) == "") {
             // Close the connection and return.
             sendCommand("AT+CIPCLOSE", "OK", 1000)
-            return "xxx"
+            return value
         }
 
         // Return if Blynk response is not 200.
         if (getResponse("HTTP/1.1 200 OK", 10000) == "") {
             // Close the connection and return.
             sendCommand("AT+CIPCLOSE", "OK", 1000)
-            return "cccc"
+            return value
         }
 
         // Get the pin value.
         let response = getResponse("[\"", 200)
-        value = response.slice(response.indexOf("[\"") + 2, response.indexOf("\"]"))
-
+        value = "cekaja"
+        //value = response.slice(response.indexOf("[\"") + 2, response.indexOf("\"]"))
         // Close the connection.
         sendCommand("AT+CIPCLOSE", "OK", 1000)
 
