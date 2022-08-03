@@ -40,7 +40,7 @@ namespace esp8266 {
     //% blockId=esp8266_read_blynk
     //% block="read Blynk: Token %authToken Pin %pin"
     export function readBlynk(authToken: string, pin: string): string {
-        let value = ""
+        let value = "ccc"
 
         // Reset the upload successful flag.
         blynkUpdated = false
@@ -62,7 +62,7 @@ namespace esp8266 {
         //let data = "GET /" + "external" + "/api/" + "update?token=" + authToken + "&" + pin + "=" + formatUrl(value) + " HTTP/1.1\r\n"
         
         // Send the data.
-        sendCommand("AT+CIPSEND=" + (data.length + 2))
+        sendCommand("AT+CIPSEND=" + (data.length + 2), "OK")
         sendCommand(data)
         
         // Return if "SEND OK" is not received.
