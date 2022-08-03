@@ -123,7 +123,9 @@ namespace esp8266 {
         }
 
         // Construct the data to send.
-        let data = "GET /" + authToken + "/update/" + pin + "?value=" + formatUrl(value) + " HTTP/1.1\r\n"
+        let data = "GET /" + "external" + "/api/" + "update?token=" + authToken + "&" + pin + "?value=" + formatUrl(value) + " HTTP/1.1\r\n"
+        
+        //https://blynk.cloud/external/api/update?token=ffujYGgbf805tgsf&v1=100
 
         // Send the data.
         sendCommand("AT+CIPSEND=" + (data.length + 2))
