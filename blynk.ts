@@ -40,7 +40,7 @@ namespace esp8266 {
     //% blockId=esp8266_read_blynk
     //% block="read Blynk: Token %authToken Pin %pin"
     export function readBlynk(authToken: string, pin: string): string {
-        let value = ""
+        let value = "iiii"
 
         // Reset the upload successful flag.
         blynkUpdated = false
@@ -69,14 +69,14 @@ namespace esp8266 {
         if (getResponse("SEND OK", 10000) == "") {
             // Close the connection and return.
             sendCommand("AT+CIPCLOSE", "OK", 1000)
-            return value
+            return "xxx"
         }
 
         // Return if Blynk response is not 200.
         if (getResponse("HTTP/1.1 200 OK", 10000) == "") {
             // Close the connection and return.
             sendCommand("AT+CIPCLOSE", "OK", 1000)
-            return value
+            return "cccc"
         }
 
         // Get the pin value.
