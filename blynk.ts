@@ -52,7 +52,7 @@ namespace esp8266 {
         if (sendCommand("AT+CIPSTART=\"TCP\",\"" + BLYNK_API_URL + "\",80", "OK", 10000) == false) {
             // Close the connection and return.
             sendCommand("AT+CIPCLOSE", "OK", 1000)
-            return "huahuahua
+            return "huahuahua"
         }
 
 //         // Construct the data to send.
