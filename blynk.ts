@@ -52,43 +52,41 @@ namespace esp8266 {
         if (sendCommand("AT+CIPSTART=\"TCP\",\"" + BLYNK_API_URL + "\",80", "OK", 10000) == false) {
             // Close the connection and return.
             sendCommand("AT+CIPCLOSE", "OK", 1000)
-            value = "Cuk Mar"
-            return "huahuahua"
+            return value
         }
 
-//         // Construct the data to send.
-//         //let data = "GET /" + authToken + "/get/" + pin + " HTTP/1.1\r\n"
-//         let data = "GET /external/api/get?token=" + authToken + "&" + pin + " HTTP/1.1\r\n"
-//         //https://blynk.cloud/external/api/get?token=Rps15JICmtRVbFyS_95houlLbm6xIQ2L&v1
-//         // let data = "GET /" + "external" + "/api/" + "update?token=" + authToken + "&" + pin + "=" + formatUrl(value) + " HTTP/1.1\r\n"
+        // Construct the data to send.
+        //let data = "GET /" + authToken + "/get/" + pin + " HTTP/1.1\r\n"
+        let data = "GET /external/api/get?token=" + authToken + "&" + pin + " HTTP/1.1\r\n"
+        //https://blynk.cloud/external/api/get?token=Rps15JICmtRVbFyS_95houlLbm6xIQ2L&v1
+        // let data = "GET /" + "external" + "/api/" + "update?token=" + authToken + "&" + pin + "=" + formatUrl(value) + " HTTP/1.1\r\n"
         
-//         // Send the data.
-//         sendCommand("AT+CIPSEND=" + (data.length + 2), "OK")
-//         sendCommand(data)
+        // Send the data.
+        sendCommand("AT+CIPSEND=" + (data.length + 4), "OK")
+        sendCommand(data)
         
-//         // Return if "SEND OK" is not received.
-//         if (getResponse("SEND OK", 10000) == "") {
-//             // Close the connection and return.
-//             sendCommand("AT+CIPCLOSE", "OK", 1000)
-//             return value
-//         }
+        // Return if "SEND OK" is not received.
+        if (getResponse("SEND OK", 10000) == "") {
+            // Close the connection and return.
+            sendCommand("AT+CIPCLOSE", "OK", 1000)
+            return value
+        }
 
-//         // Return if Blynk response is not 200.
-//         if (getResponse("HTTP/1.1 200 OK", 10000) == "") {
-//             // Close the connection and return.
-//             sendCommand("AT+CIPCLOSE", "OK", 1000)
-//             return value
-//         }
+        // Return if Blynk response is not 200.
+        if (getResponse("HTTP/1.1 200 OK", 10000) == "") {
+            // Close the connection and return.
+            sendCommand("AT+CIPCLOSE", "OK", 1000)
+            return value
+        }
 
-//         // Get the pin value.
-//         let response = getResponse("[\"", 200)
-//         value = "cekaja"
-//         //value = response.slice(response.indexOf("[\"") + 2, response.indexOf("\"]"))
-//         // Close the connection.
-//         sendCommand("AT+CIPCLOSE", "OK", 1000)
+        // Get the pin value.
+        let response = getResponse("[\"", 200)
+        value = response.slice(response.indexOf("[\"") + 2, response.indexOf("\"]"))
+        // Close the connection.
+        sendCommand("AT+CIPCLOSE", "OK", 1000)
 
-//         // Set the upload successful flag and return.
-//         // Make sure the value is not empty.
+        // Set the upload successful flag and return.
+        // Make sure the value is not empty.
         if (value != "") {
             blynkUpdated = true
         }
@@ -128,7 +126,7 @@ namespace esp8266 {
 
 
         // Send the data.
-        sendCommand("AT+CIPSEND=" + (data.length + 2))
+        sendCommand("AT+CIPSEND=" + (data.length + 4))
         sendCommand(data)
         
         // Return if "SEND OK" is not received.
